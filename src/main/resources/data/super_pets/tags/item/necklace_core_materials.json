@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values": [
+    "minecraft:stone",
+    "minecraft:stone_bricks",
+    "minecraft:mossy_stone_bricks",
+    "minecraft:cracked_stone_bricks",
+    "minecraft:cobblestone",
+    "minecraft:deepslate",
+    "minecraft:cobbled_deepslate",
+    "super_pets:ancientresienpink",
+    "super_pets:ancientresienred",
+    "super_pets:ancientresiengreen",
+    "super_pets:ancientresienpurple"
+  ]
+}

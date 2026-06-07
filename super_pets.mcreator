@@ -1,0 +1,244 @@
+{
+  "mod_elements": [
+    {
+      "name": "Ancientresienpink",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ancientresienpink",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/super_pets/models/item/ancientresienpink.json",
+          "src/main/java/net/mcreator/superpets/block/AncientresienpinkBlock.java",
+          "src/main/resources/assets/super_pets/blockstates/ancientresienpink.json",
+          "src/main/resources/assets/super_pets/models/block/ancientresienpink.json",
+          "src/main/resources/assets/super_pets/items/ancientresienpink.json",
+          "src/main/resources/data/super_pets/loot_table/blocks/ancientresienpink.json"
+        ]
+      }
+    },
+    {
+      "name": "Ancientresienpurple",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ancientresienpurple",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/super_pets/models/item/ancientresienpurple.json",
+          "src/main/resources/assets/super_pets/models/block/ancientresienpurple.json",
+          "src/main/resources/assets/super_pets/items/ancientresienpurple.json",
+          "src/main/resources/data/super_pets/loot_table/blocks/ancientresienpurple.json",
+          "src/main/resources/assets/super_pets/blockstates/ancientresienpurple.json",
+          "src/main/java/net/mcreator/superpets/block/AncientresienpurpleBlock.java"
+        ]
+      }
+    },
+    {
+      "name": "Ancientresiengreen",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ancientresiengreen",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/super_pets/blockstates/ancientresiengreen.json",
+          "src/main/resources/assets/super_pets/items/ancientresiengreen.json",
+          "src/main/java/net/mcreator/superpets/block/AncientresiengreenBlock.java",
+          "src/main/resources/assets/super_pets/models/item/ancientresiengreen.json",
+          "src/main/resources/assets/super_pets/models/block/ancientresiengreen.json",
+          "src/main/resources/data/super_pets/loot_table/blocks/ancientresiengreen.json"
+        ]
+      }
+    },
+    {
+      "name": "Ancientresienred",
+      "type": "block",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "ancientresienred",
+      "metadata": {
+        "files": [
+          "src/main/java/net/mcreator/superpets/block/AncientresienredBlock.java",
+          "src/main/resources/data/super_pets/loot_table/blocks/ancientresienred.json",
+          "src/main/resources/assets/super_pets/models/block/ancientresienred.json",
+          "src/main/resources/assets/super_pets/models/item/ancientresienred.json",
+          "src/main/resources/assets/super_pets/blockstates/ancientresienred.json",
+          "src/main/resources/assets/super_pets/items/ancientresienred.json"
+        ]
+      }
+    },
+    {
+      "name": "FRIENDS",
+      "type": "tab",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "friends",
+      "metadata": {
+        "files": []
+      }
+    },
+    {
+      "name": "Friendshipshrinenothing",
+      "type": "structure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "friendshipshrinenothing",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/super_pets/worldgen/structure_set/friendshipshrinenothing.json",
+          "src/main/resources/data/super_pets/worldgen/structure/friendshipshrinenothing.json",
+          "src/main/resources/data/super_pets/worldgen/template_pool/friendshipshrinenothing.json"
+        ]
+      }
+    },
+    {
+      "name": "FriendshipshrinePINK",
+      "type": "structure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "friendshipshrine_pink",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/super_pets/worldgen/structure/friendshipshrine_pink.json",
+          "src/main/resources/data/super_pets/worldgen/template_pool/friendshipshrine_pink.json",
+          "src/main/resources/data/super_pets/worldgen/structure_set/friendshipshrine_pink.json"
+        ]
+      }
+    },
+    {
+      "name": "FriendshipshrineRED",
+      "type": "structure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "friendshipshrine_red",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/super_pets/worldgen/structure/friendshipshrine_red.json",
+          "src/main/resources/data/super_pets/worldgen/structure_set/friendshipshrine_red.json",
+          "src/main/resources/data/super_pets/worldgen/template_pool/friendshipshrine_red.json"
+        ]
+      }
+    },
+    {
+      "name": "FriendshipshrineGREEN",
+      "type": "structure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "friendshipshrine_green",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/super_pets/worldgen/structure_set/friendshipshrine_green.json",
+          "src/main/resources/data/super_pets/worldgen/template_pool/friendshipshrine_green.json",
+          "src/main/resources/data/super_pets/worldgen/structure/friendshipshrine_green.json"
+        ]
+      }
+    },
+    {
+      "name": "FriendshipshrinePURPLE",
+      "type": "structure",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "friendshipshrine_purple",
+      "metadata": {
+        "files": [
+          "src/main/resources/data/super_pets/worldgen/template_pool/friendshipshrine_purple.json",
+          "src/main/resources/data/super_pets/worldgen/structure/friendshipshrine_purple.json",
+          "src/main/resources/data/super_pets/worldgen/structure_set/friendshipshrine_purple.json"
+        ]
+      }
+    },
+    {
+      "name": "Stonebutwird",
+      "type": "item",
+      "compiles": true,
+      "locked_code": false,
+      "registry_name": "stonebutwird",
+      "metadata": {
+        "files": [
+          "src/main/resources/assets/super_pets/items/stonebutwird.json",
+          "src/main/java/net/mcreator/superpets/item/StonebutwirdItem.java",
+          "src/main/resources/assets/super_pets/models/item/stonebutwird.json"
+        ]
+      }
+    }
+  ],
+  "variable_elements": [],
+  "sound_elements": [],
+  "tag_elements": {
+    "BLOCKS:minecraft:mineable/pickaxe": [
+      "~Ancientresienred@CUSTOM:Ancientresienred",
+      "~Ancientresiengreen@CUSTOM:Ancientresiengreen",
+      "~Ancientresienpurple@CUSTOM:Ancientresienpurple",
+      "~Ancientresienpink@CUSTOM:Ancientresienpink"
+    ],
+    "BLOCKS:minecraft:needs_diamond_tool": [
+      "~Ancientresienred@CUSTOM:Ancientresienred",
+      "~Ancientresiengreen@CUSTOM:Ancientresiengreen",
+      "~Ancientresienpurple@CUSTOM:Ancientresienpurple",
+      "~Ancientresienpink@CUSTOM:Ancientresienpink"
+    ]
+  },
+  "tab_element_order": {},
+  "language_map": {
+    "en_us": {
+      "item.super_pets.ancientresienpink": "pink Ancient resien",
+      "block.super_pets.ancientresienpink.description_0": "AWW SO CUTE",
+      "block.super_pets.ancientresienpurple.description_0": "AWW SO RARE",
+      "item.super_pets.ancientresienpurple": "purple Ancient resien",
+      "item.super_pets.ancientresiengreen": "green Ancient resien",
+      "block.super_pets.ancientresiengreen.description_0": "AWW SO GRREEENNNN",
+      "block.super_pets.ancientresienred.description_0": "AWW SO REMINDS ME OF THE DAY MY PERENTS DIED",
+      "item.super_pets.ancientresienred": "red Ancient resien",
+      "item_group.super_pets.friends": "FRIENDS",
+      "item.super_pets.stonebutwird": "Stonebutwird"
+    }
+  },
+  "metadata": {
+    "files": [
+      "src/main/java/net/mcreator/superpets/init/SuperPetsModBlocks.java",
+      "src/main/java/net/mcreator/superpets/init/SuperPetsModItems.java",
+      "src/main/java/net/mcreator/superpets/mixin/RepairItemRecipeMixin.java",
+      "src/main/java/net/mcreator/superpets/mixin/ServerPlayerMixin.java",
+      "src/main/java/net/mcreator/superpets/mixin/ItemStackMixin.java",
+      "src/main/java/net/mcreator/superpets/event/PlayerEvents.java",
+      "src/main/java/net/mcreator/superpets/SuperPetsModClient.java",
+      "src/main/java/net/mcreator/superpets/mixin/ExperienceOrbMixin.java",
+      "src/main/java/net/mcreator/superpets/mixin/CommandsMixin.java",
+      "src/main/resources/pack.mcmeta",
+      "src/main/java/net/mcreator/superpets/event/MiscEvents.java",
+      "src/main/java/net/mcreator/superpets/mixin/BoneMealItemMixin.java",
+      "src/main/java/net/mcreator/superpets/mixin/BlockItemMixin.java",
+      "src/main/java/net/mcreator/superpets/mixin/LivingEntityMixin.java",
+      "src/main/java/net/mcreator/superpets/event/ItemEvents.java",
+      "src/main/java/net/mcreator/superpets/init/SuperPetsModTabs.java",
+      "src/main/java/net/mcreator/superpets/mixin/PlayerMixin.java",
+      "src/main/resources/fabric.mod.json",
+      "src/main/resources/super_pets.mixins.json",
+      "src/main/resources/META-INF/super_pets.classtweaker",
+      "src/main/java/net/mcreator/superpets/event/LivingEntityEvents.java",
+      "src/main/java/net/mcreator/superpets/event/BlockEvents.java",
+      "src/main/java/net/mcreator/superpets/SuperPetsMod.java"
+    ]
+  },
+  "foldersRoot": {
+    "name": "~",
+    "children": []
+  },
+  "workspaceSettings": {
+    "modid": "super_pets",
+    "modName": "super_pets",
+    "version": "1.0.9",
+    "author": "MCreator",
+    "websiteURL": "https://mcreator.net",
+    "license": "Not specified",
+    "serverSideOnly": false,
+    "requiredMods": [],
+    "dependencies": [],
+    "dependants": [],
+    "mcreatorDependencies": [],
+    "currentGenerator": "fabric-26.1.2",
+    "modElementsPackage": "net.mcreator.superpets"
+  },
+  "mcreatorVersion": 202600222416
+}

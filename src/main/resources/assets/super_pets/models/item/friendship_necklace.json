@@ -1,0 +1,100 @@
+{
+  "credit": "Vanilla-compatible gold chain item model adapted from the supplied glTF necklace asset.",
+  "textures": {
+    "0": "super_pets:item/gold_relic",
+    "particle": "super_pets:item/gold_relic"
+  },
+  "elements": [
+    {
+      "name": "left_chain",
+      "from": [2.0, 5.0, 7.0],
+      "to": [4.0, 13.0, 9.0],
+      "rotation": {"origin": [8.0, 8.0, 8.0], "axis": "z", "angle": -22.5},
+      "faces": {
+        "north": {"texture": "#0"},
+        "east": {"texture": "#0"},
+        "south": {"texture": "#0"},
+        "west": {"texture": "#0"},
+        "up": {"texture": "#0"},
+        "down": {"texture": "#0"}
+      }
+    },
+    {
+      "name": "right_chain",
+      "from": [12.0, 5.0, 7.0],
+      "to": [14.0, 13.0, 9.0],
+      "rotation": {"origin": [8.0, 8.0, 8.0], "axis": "z", "angle": 22.5},
+      "faces": {
+        "north": {"texture": "#0"},
+        "east": {"texture": "#0"},
+        "south": {"texture": "#0"},
+        "west": {"texture": "#0"},
+        "up": {"texture": "#0"},
+        "down": {"texture": "#0"}
+      }
+    },
+    {
+      "name": "top_chain",
+      "from": [5.0, 12.0, 7.0],
+      "to": [11.0, 14.0, 9.0],
+      "faces": {
+        "north": {"texture": "#0"},
+        "east": {"texture": "#0"},
+        "south": {"texture": "#0"},
+        "west": {"texture": "#0"},
+        "up": {"texture": "#0"},
+        "down": {"texture": "#0"}
+      }
+    },
+    {
+      "name": "left_lower_link",
+      "from": [5.0, 4.5, 7.0],
+      "to": [7.0, 9.5, 9.0],
+      "rotation": {"origin": [8.0, 7.0, 8.0], "axis": "z", "angle": 22.5},
+      "faces": {
+        "north": {"texture": "#0"},
+        "east": {"texture": "#0"},
+        "south": {"texture": "#0"},
+        "west": {"texture": "#0"},
+        "up": {"texture": "#0"},
+        "down": {"texture": "#0"}
+      }
+    },
+    {
+      "name": "right_lower_link",
+      "from": [9.0, 4.5, 7.0],
+      "to": [11.0, 9.5, 9.0],
+      "rotation": {"origin": [8.0, 7.0, 8.0], "axis": "z", "angle": -22.5},
+      "faces": {
+        "north": {"texture": "#0"},
+        "east": {"texture": "#0"},
+        "south": {"texture": "#0"},
+        "west": {"texture": "#0"},
+        "up": {"texture": "#0"},
+        "down": {"texture": "#0"}
+      }
+    },
+    {
+      "name": "center_pendant",
+      "from": [7.0, 2.0, 6.7],
+      "to": [9.0, 5.0, 9.3],
+      "faces": {
+        "north": {"texture": "#0"},
+        "east": {"texture": "#0"},
+        "south": {"texture": "#0"},
+        "west": {"texture": "#0"},
+        "up": {"texture": "#0"},
+        "down": {"texture": "#0"}
+      }
+    }
+  ],
+  "display": {
+    "thirdperson_righthand": {"rotation": [75, 0, 0], "translation": [0, 2.5, 1], "scale": [0.5, 0.5, 0.5]},
+    "thirdperson_lefthand": {"rotation": [75, 0, 0], "translation": [0, 2.5, 1], "scale": [0.5, 0.5, 0.5]},
+    "firstperson_righthand": {"rotation": [0, -35, 10], "translation": [0, 2, 0], "scale": [0.62, 0.62, 0.62]},
+    "firstperson_lefthand": {"rotation": [0, -35, 10], "translation": [0, 2, 0], "scale": [0.62, 0.62, 0.62]},
+    "gui": {"rotation": [25, 180, 0], "translation": [0, -0.5, 0], "scale": [0.88, 0.88, 0.88]},
+    "ground": {"translation": [0, 3, 0], "scale": [0.48, 0.48, 0.48]},
+    "fixed": {"rotation": [0, 180, 0], "scale": [0.75, 0.75, 0.75]}
+  }
+}

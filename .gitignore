@@ -10,3 +10,7 @@ run/
 
 # Logs
 *.log
+
+# MCreator local backups/caches
+.mcreator/workspaceBackups/
+.mcreator/generatorGradleCache

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "equipment",
+  "key": {
+    "C": "minecraft:chain",
+    "G": "minecraft:gold_nugget",
+    "S": "#super_pets:necklace_core_materials"
+  },
+  "pattern": [
+    " C ",
+    "G G",
+    " S "
+  ],
+  "result": {
+    "id": "super_pets:friendship_necklace"
+  }
+}

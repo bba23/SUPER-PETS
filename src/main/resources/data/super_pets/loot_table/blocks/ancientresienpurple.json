@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:block",
+  "random_sequence": "super_pets:blocks/ancientresienpurple",
+  "pools": [
+    {
+      "rolls": 1.0,
+      "conditions": [
+        {
+          "condition": "minecraft:survives_explosion"
+        }
+      ],
+      "entries": [
+        {
+          "type": "minecraft:item",
+          "name": "super_pets:ancientresienpurple"
+        }
+      ]
+    }
+  ]
+}

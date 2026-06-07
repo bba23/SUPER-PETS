@@ -1,0 +1,27 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "super_pets:block/ancientresienpink"
+    },
+    "facing=east": {
+      "model": "super_pets:block/ancientresienpink",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "super_pets:block/ancientresienpink",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "super_pets:block/ancientresienpink",
+      "y": 270
+    },
+    "facing=up": {
+      "model": "super_pets:block/ancientresienpink",
+      "x": 270
+    },
+    "facing=down": {
+      "model": "super_pets:block/ancientresienpink",
+      "x": 90
+    }
+  }
+}

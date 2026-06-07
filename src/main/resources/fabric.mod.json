@@ -1,0 +1,33 @@
+{
+  "schemaVersion": 1,
+  "id": "super_pets",
+  "version": "1.0.9",
+  "name": "super_pets",
+  "authors": [
+    "MCreator"
+  ],
+  "contact": {
+    "homepage": "https://mcreator.net",
+    "sources": ""
+  },
+  "license": "Not specified",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.mcreator.superpets.SuperPetsMod"
+    ],
+    "client": [
+      "net.mcreator.superpets.SuperPetsModClient"
+    ]
+  },
+  "mixins": [
+    "super_pets.mixins.json"
+  ],
+  "accessWidener": "META-INF/super_pets.classtweaker",
+  "depends": {
+    "fabricloader": ">=0.19.2",
+    "minecraft": "~26.1.2",
+    "java": ">=25",
+    "fabric-api": "*"
+  }
+}

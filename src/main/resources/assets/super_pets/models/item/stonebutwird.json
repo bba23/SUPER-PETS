@@ -1,0 +1,87 @@
+{
+  "credit": "Vanilla-compatible item adaptation of the supplied Blockbench IDEL_E model.",
+  "textures": {
+    "0": "super_pets:item/gold_relic",
+    "particle": "super_pets:item/gold_relic"
+  },
+  "elements": [
+    {
+      "name": "idel_core_a",
+      "from": [3.0, 5.5, 5.0],
+      "to": [12.0, 9.5, 11.0],
+      "faces": {
+        "north": {"texture": "#0"},
+        "east": {"texture": "#0"},
+        "south": {"texture": "#0"},
+        "west": {"texture": "#0"},
+        "up": {"texture": "#0"},
+        "down": {"texture": "#0"}
+      }
+    },
+    {
+      "name": "idel_core_b",
+      "from": [4.0, 6.0, 4.0],
+      "to": [13.0, 10.0, 10.0],
+      "rotation": {"origin": [8.0, 8.0, 8.0], "axis": "y", "angle": 22.5},
+      "faces": {
+        "north": {"texture": "#0"},
+        "east": {"texture": "#0"},
+        "south": {"texture": "#0"},
+        "west": {"texture": "#0"},
+        "up": {"texture": "#0"},
+        "down": {"texture": "#0"}
+      }
+    },
+    {
+      "name": "idel_tilt_left",
+      "from": [2.5, 4.8, 5.0],
+      "to": [11.5, 8.8, 11.0],
+      "rotation": {"origin": [8.0, 8.0, 8.0], "axis": "z", "angle": -22.5},
+      "faces": {
+        "north": {"texture": "#0"},
+        "east": {"texture": "#0"},
+        "south": {"texture": "#0"},
+        "west": {"texture": "#0"},
+        "up": {"texture": "#0"},
+        "down": {"texture": "#0"}
+      }
+    },
+    {
+      "name": "idel_tilt_right",
+      "from": [4.5, 7.0, 5.0],
+      "to": [13.5, 11.0, 11.0],
+      "rotation": {"origin": [8.0, 8.0, 8.0], "axis": "z", "angle": 22.5},
+      "faces": {
+        "north": {"texture": "#0"},
+        "east": {"texture": "#0"},
+        "south": {"texture": "#0"},
+        "west": {"texture": "#0"},
+        "up": {"texture": "#0"},
+        "down": {"texture": "#0"}
+      }
+    },
+    {
+      "name": "idel_shine",
+      "from": [5.0, 10.0, 4.7],
+      "to": [11.5, 11.0, 5.2],
+      "rotation": {"origin": [8.0, 8.0, 8.0], "axis": "z", "angle": -22.5},
+      "faces": {
+        "north": {"texture": "#0"},
+        "east": {"texture": "#0"},
+        "south": {"texture": "#0"},
+        "west": {"texture": "#0"},
+        "up": {"texture": "#0"},
+        "down": {"texture": "#0"}
+      }
+    }
+  ],
+  "display": {
+    "thirdperson_righthand": {"rotation": [65, -35, 0], "translation": [0, 2.5, 1], "scale": [0.45, 0.45, 0.45]},
+    "thirdperson_lefthand": {"rotation": [65, -35, 0], "translation": [0, 2.5, 1], "scale": [0.45, 0.45, 0.45]},
+    "firstperson_righthand": {"rotation": [0, -45, 20], "translation": [1, 2, 0], "scale": [0.65, 0.65, 0.65]},
+    "firstperson_lefthand": {"rotation": [0, -45, 20], "translation": [1, 2, 0], "scale": [0.65, 0.65, 0.65]},
+    "gui": {"rotation": [30, 225, 0], "translation": [0, 0, 0], "scale": [0.82, 0.82, 0.82]},
+    "ground": {"translation": [0, 3, 0], "scale": [0.45, 0.45, 0.45]},
+    "fixed": {"rotation": [0, 180, 0], "scale": [0.72, 0.72, 0.72]}
+  }
+}

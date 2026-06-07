@@ -1,0 +1,12 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "super_pets:stonebutwird",
+    "super_pets:stonebutwird"
+  ],
+  "result": {
+    "count": 2,
+    "id": "super_pets:linked_friendship_stone"
+  }
+}

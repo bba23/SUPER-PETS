@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "super_pets:giant_soul_stone",
+    "super_pets:stonebutwird"
+  ],
+  "result": {
+    "id": "super_pets:giant_linked_friendship_stone"
+  }
+}

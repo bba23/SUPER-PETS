@@ -1,0 +1,76 @@
+﻿{
+    "textures":  {
+                     "resin":  "super_pets:block/11",
+                     "particle":  "super_pets:block/11"
+                 },
+    "elements":  [
+                     {
+                         "from":  [
+                                      0,
+                                      0,
+                                      0
+                                  ],
+                         "to":  [
+                                    16,
+                                    8,
+                                    16
+                                ],
+                         "faces":  {
+                                       "down":  {
+                                                    "uv":  [
+                                                               0,
+                                                               0,
+                                                               16,
+                                                               16
+                                                           ],
+                                                    "texture":  "#resin"
+                                                },
+                                       "up":  {
+                                                  "uv":  [
+                                                             0,
+                                                             0,
+                                                             16,
+                                                             16
+                                                         ],
+                                                  "texture":  "#resin"
+                                              },
+                                       "north":  {
+                                                     "uv":  [
+                                                                0,
+                                                                8,
+                                                                16,
+                                                                16
+                                                            ],
+                                                     "texture":  "#resin"
+                                                 },
+                                       "south":  {
+                                                     "uv":  [
+                                                                0,
+                                                                8,
+                                                                16,
+                                                                16
+                                                            ],
+                                                     "texture":  "#resin"
+                                                 },
+                                       "west":  {
+                                                    "uv":  [
+                                                               0,
+                                                               8,
+                                                               16,
+                                                               16
+                                                           ],
+                                                    "texture":  "#resin"
+                                                },
+                                       "east":  {
+                                                    "uv":  [
+                                                               0,
+                                                               8,
+                                                               16,
+                                                               16
+                                                           ],
+                                                    "texture":  "#resin"
+                                                }
+                                   }
+                     }
+                 ]
+}
