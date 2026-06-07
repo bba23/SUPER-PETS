@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "super_pets:item/generated_tool_pickaxe_axolotl"
+  }
+}

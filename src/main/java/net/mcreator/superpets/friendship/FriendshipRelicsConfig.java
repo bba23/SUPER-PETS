@@ -22,6 +22,10 @@ public final class FriendshipRelicsConfig {
 	public static float resinSpeedFactor = 1.35f;
 	public static float slabSlipperiness = resinSlipperiness;
 	public static float slabSpeedFactor = resinSpeedFactor;
+	public static boolean creatorStoneAiEnabled = false;
+	public static String creatorStoneAiHelperCommand = "";
+	public static String creatorStoneGeneratedAssetRoot = "config/super_pets/generated_ai";
+	public static int creatorStoneAnvilCost = 4;
 
 	private FriendshipRelicsConfig() {
 	}
@@ -55,6 +59,10 @@ public final class FriendshipRelicsConfig {
 		resinSpeedFactor = (float) readDouble(properties, "ancient_resin_speed_factor", readDouble(properties, "ancient_resin_slab_speed_factor", resinSpeedFactor));
 		slabSlipperiness = (float) readDouble(properties, "ancient_resin_slab_slipperiness", resinSlipperiness);
 		slabSpeedFactor = (float) readDouble(properties, "ancient_resin_slab_speed_factor", resinSpeedFactor);
+		creatorStoneAiEnabled = readBoolean(properties, "creator_stone_ai_enabled", creatorStoneAiEnabled);
+		creatorStoneAiHelperCommand = properties.getProperty("creator_stone_ai_helper_command", creatorStoneAiHelperCommand).trim();
+		creatorStoneGeneratedAssetRoot = properties.getProperty("creator_stone_generated_asset_root", creatorStoneGeneratedAssetRoot).trim();
+		creatorStoneAnvilCost = readInt(properties, "creator_stone_anvil_cost", creatorStoneAnvilCost);
 	}
 
 	private static Properties defaults() {
@@ -71,6 +79,10 @@ public final class FriendshipRelicsConfig {
 		properties.setProperty("ancient_resin_speed_factor", String.valueOf(resinSpeedFactor));
 		properties.setProperty("ancient_resin_slab_slipperiness", String.valueOf(slabSlipperiness));
 		properties.setProperty("ancient_resin_slab_speed_factor", String.valueOf(slabSpeedFactor));
+		properties.setProperty("creator_stone_ai_enabled", String.valueOf(creatorStoneAiEnabled));
+		properties.setProperty("creator_stone_ai_helper_command", creatorStoneAiHelperCommand);
+		properties.setProperty("creator_stone_generated_asset_root", creatorStoneGeneratedAssetRoot);
+		properties.setProperty("creator_stone_anvil_cost", String.valueOf(creatorStoneAnvilCost));
 		return properties;
 	}
 
@@ -88,5 +100,14 @@ public final class FriendshipRelicsConfig {
 		} catch (NumberFormatException ignored) {
 			return fallback;
 		}
+	}
+
+	private static boolean readBoolean(Properties properties, String key, boolean fallback) {
+		String value = properties.getProperty(key, String.valueOf(fallback)).trim();
+		if ("true".equalsIgnoreCase(value))
+			return true;
+		if ("false".equalsIgnoreCase(value))
+			return false;
+		return fallback;
 	}
 }
