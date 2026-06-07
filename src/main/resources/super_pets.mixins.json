@@ -9,6 +9,7 @@
     "ItemStackMixin",
     "BlockItemMixin",
     "BoneMealItemMixin",
+    "AnvilMenuMixin",
     "CommandsMixin",
     "ExperienceOrbMixin",
     "RepairItemRecipeMixin",

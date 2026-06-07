@@ -37,6 +37,7 @@ public class SuperPetsModTabs {
 					tabData.accept(FriendshipRelicsRegistry.GIANT_SOUL_STONE);
 					tabData.accept(FriendshipRelicsRegistry.GIANT_LINKED_FRIENDSHIP_STONE);
 					tabData.accept(FriendshipRelicsRegistry.MASTER_STONE);
+					tabData.accept(FriendshipRelicsRegistry.CREATOR_STONE);
 				}).build());
 	}
 }

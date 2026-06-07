@@ -31,6 +31,7 @@ public final class FriendshipRelicsRegistry {
 	public static Item GIANT_SOUL_STONE;
 	public static Item GIANT_LINKED_FRIENDSHIP_STONE;
 	public static Item MASTER_STONE;
+	public static Item CREATOR_STONE;
 
 	private static boolean loaded;
 
@@ -56,6 +57,7 @@ public final class FriendshipRelicsRegistry {
 		GIANT_SOUL_STONE = registerItem("giant_soul_stone", properties -> new Item(properties.stacksTo(16).rarity(Rarity.EPIC)));
 		GIANT_LINKED_FRIENDSHIP_STONE = registerItem("giant_linked_friendship_stone", properties -> new GiantLinkedFriendshipStoneItem(properties.stacksTo(1).rarity(Rarity.EPIC)));
 		MASTER_STONE = registerItem("master_stone", properties -> new MasterStoneItem(properties.stacksTo(1).rarity(Rarity.EPIC).fireResistant()));
+		CREATOR_STONE = registerItem("creator_stone", properties -> new CreatorStoneItem(properties.stacksTo(1).rarity(Rarity.EPIC).fireResistant()));
 	}
 
 	private static AncientResinSlabBlock registerAncientResinSlab(String name) {
