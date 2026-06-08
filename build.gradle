@@ -2,7 +2,7 @@ plugins {
     id 'net.fabricmc.fabric-loom' version '1.16-SNAPSHOT'
 }
 
-version = '1.0.10'
+version = '1.0.11'
 base.archivesName = "modid"
 
 def lunarModsDir = file('C:/Users/Itay/.lunarclient/profiles/user-modpack/banan-test/mods/fabric-26.1.2')
@@ -26,8 +26,29 @@ dependencies {
     implementation "net.fabricmc.fabric-api:fabric-api:0.150.0+26.1.2"
 }
 
+sourceSets {
+    aiAddon {
+        java.setSrcDirs(['src/aiAddon/java'])
+        resources.setSrcDirs(['src/aiAddon/resources'])
+        compileClasspath += sourceSets.main.output + configurations.compileClasspath
+        runtimeClasspath += output + compileClasspath
+    }
+}
+
+tasks.named('compileAiAddonJava') {
+    dependsOn tasks.named('classes')
+}
+
+tasks.register('aiAddonJar', Jar) {
+    archiveBaseName.set('super-pets-ai')
+    archiveVersion.set(project.version.toString())
+    from sourceSets.aiAddon.output
+    dependsOn tasks.named('aiAddonClasses')
+}
+
 // We need to do this because MCreator doesn't allow to split armor textures in multiple folders
 build {
+    dependsOn tasks.named('aiAddonJar')
     doLast {
         copy {
             from 'src/main/resources/assets/dev_fabric_2612/textures/entity/equipment/humanoid/'
@@ -35,9 +56,14 @@ build {
         }
         delete fileTree(lunarModsDir) {
             include "${base.archivesName.get()}-*.jar"
+            include "super-pets-ai-*.jar"
         }
         copy {
             from "build/libs/${base.archivesName.get()}-${project.version}.jar"
+            into lunarModsDir
+        }
+        copy {
+            from tasks.named('aiAddonJar').get().archiveFile
             into lunarModsDir
         }
     }

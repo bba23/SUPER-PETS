@@ -16,11 +16,6 @@
         },
         {
           "type": "minecraft:item",
-          "name": "super_pets:creator_stone",
-          "weight": 1
-        },
-        {
-          "type": "minecraft:item",
           "functions": [
             {
               "add": false,

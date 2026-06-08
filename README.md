@@ -1,6 +1,6 @@
 # Friendship Relics
 
-Friendship Relics is a Fabric Minecraft Java Edition mod built from the existing MCreator workspace in this folder. This branch adds the optional Creator's Stone AI extension while keeping deterministic fallback visuals active by default.
+Friendship Relics is a Fabric Minecraft Java Edition mod built from the existing MCreator workspace in this folder. This branch builds the normal mod plus an optional `super_pets_ai` add-on jar for the Creator's Stone AI extension.
 
 ## Chosen Versions
 
@@ -36,13 +36,10 @@ These match the existing Gradle/MCreator project and current compatible Fabric s
 - Bonded parrots and axolotls can be mounted by a player carrying the matching Master Stone.
 - Bonded axolotl riders receive Water Breathing while mounted.
 - Bonded parrot and axolotl mounts use synced client WASD/jump/sneak/sprint input for controllable flight/swimming.
-- Creator's Stone can be found rarely in Friendship Shrine chest loot.
-- Right-clicking a bonded parrot or axolotl with Creator's Stone transforms that same stack into a pet-based generated artifact state.
-- Generated Creator's Stone stacks store source pet data, Bond ID, generation seed, cache key, texture path, and fallback description in custom item data.
-- Generated Creator's Stone can be applied to swords, axes, pickaxes, shovels, and hoes in an anvil to create pet-themed generated tool skin states.
-- The AI path is optional. When local AI is disabled, missing, slow, or not configured, the mod still uses bundled deterministic fallback item models and textures.
+- Creator's Stone lives in the optional `super_pets_ai` add-on jar, so the normal `super_pets` mod can be installed without it.
+- The base mod manifest suggests `super_pets_ai`, but does not require it.
 - Existing shrine variants were moved to underground Overworld worldgen with Y -50 to -10 targeting and more survival-oriented spacing.
-- Added a Friendship Shrine chest loot table for Stone of Friendship, Bonding Soul, Creator's Stone, and Ancient Resin rewards.
+- Added a Friendship Shrine chest loot table for Stone of Friendship, Bonding Soul, and Ancient Resin rewards. The optional AI add-on injects Creator's Stone into that table when installed.
 
 ## Necklace Slot Controls
 
@@ -61,17 +58,19 @@ The slab is implemented as a 2x2 half-height multiblock. Each quarter uses a dif
 
 ## Creator's Stone AI Extension
 
-Creator's Stone is registered as `super_pets:creator_stone`. A shrine chest can rarely contain it. Use it on a bonded large Parrot or Axolotl, including Legendary Giant pets, while carrying the matching Master Stone. Unbonded pets, unsupported entities, normal unrelated mobs, players, and hostile mobs are rejected.
+Creator's Stone is registered by the optional add-on as `super_pets_ai:creator_stone`. Install `modid-1.0.11.jar` for the normal mod, then add `super-pets-ai-1.0.11.jar` only when you want the AI extension. The add-on depends on `super_pets` and adds its item, loot injection, creative-tab entry, and anvil mixin from its own jar.
+
+A shrine chest can rarely contain Creator's Stone when the add-on is installed. Use it on a bonded large Parrot or Axolotl, including Legendary Giant pets, while carrying the matching Master Stone. Unbonded pets, unsupported entities, normal unrelated mobs, players, and hostile mobs are rejected.
 
 Generation stores data on the same Creator's Stone stack instead of creating a separate artifact item. The stored fields include pet type, pet variant, pet name, Bond ID, Legendary Giant status, world/player/pet-derived generation seed, cache key, generated texture path, generated description, and fallback reason.
 
 The anvil integration accepts a generated Creator's Stone in the second slot and one valid sword, axe, pickaxe, shovel, or hoe in the first slot. The output keeps the original tool item and adds a generated tool skin state through item data, lore, name, and bundled fallback item model.
 
-Local AI is currently an optional integration boundary, not a required runtime dependency. The Java mod never calls cloud APIs and does not require Python, CUDA, Hugging Face, or NVIDIA libraries to run. Configure these keys in `config/friendship_relics.properties` only when a local helper is added:
+Local AI is currently an optional integration boundary, not a required runtime dependency. The Java mod never calls cloud APIs and does not require Python, CUDA, Hugging Face, or NVIDIA libraries to run. Configure these keys in `config/super_pets_ai.properties` only when a local helper is added:
 
 - `creator_stone_ai_enabled=false`
 - `creator_stone_ai_helper_command=`
-- `creator_stone_generated_asset_root=config/super_pets/generated_ai`
+- `creator_stone_generated_asset_root=config/super_pets_ai/generated_ai`
 - `creator_stone_anvil_cost=4`
 
 Recommended local helper assumptions:
@@ -81,7 +80,7 @@ Recommended local helper assumptions:
 - Hugging Face libraries: `uv pip install "diffusers[torch]" transformers accelerate safetensors pillow`
 - Preferred starter model ID: `stabilityai/sd-turbo`
 - Suggested local cache root: `%USERPROFILE%\.cache\huggingface\hub`
-- Suggested generated asset root: `config/super_pets/generated_ai`
+- Suggested generated asset root: `config/super_pets_ai/generated_ai`
 - Offline behavior: cache models first, then set `HF_HUB_OFFLINE=1` if needed.
 
 If any helper step fails or the helper command is blank, the mod keeps working with bundled fallback textures:
@@ -97,7 +96,7 @@ If any helper step fails or the helper command is blank, the mod keeps working w
 - The shrine loot table is provided as a data hook, but existing `.nbt` shrine structures were preserved and not rewritten. Existing chests must reference `super_pets:chests/friendship_shrine` inside the structure for in-structure loot to appear.
 - Pet mounting uses stable server tick movement based on rider input and look direction. It is a base implementation, not a custom animated mount renderer.
 - Multi-passenger giant pets attempt to allow more riders through forced mounting, but vanilla passenger constraints may still limit behavior depending on entity internals.
-- Local AI generation is represented by item data, config, cache paths, and fallback models, but no model weights are bundled.
+- Local AI generation is represented by add-on item data, add-on config, cache paths, and fallback models, but no model weights are bundled.
 - The current Java path does not launch a Python helper process yet; it records the configured helper boundary and always keeps deterministic fallback visuals available.
 - The Stone of Friendship item model is a vanilla-compatible adaptation of the supplied `IDEL_E` Blockbench Java model. The Friendship Necklace item model uses a vanilla-compatible gold chain shape plus the supplied glTF gold texture; the original glTF source is preserved under `assets/super_pets/source_models/necklace/` for later replacement with a final necklace model.
 
@@ -108,3 +107,4 @@ If any helper step fails or the helper command is blank, the mod keeps working w
 ```
 
 The built jar is written to `build/libs/`.
+The normal mod jar is `modid-1.0.11.jar`; the optional AI add-on jar is `super-pets-ai-1.0.11.jar`.

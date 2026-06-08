@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "package": "net.mcreator.superpets.ai.mixin",
+  "compatibilityLevel": "JAVA_25",
+  "refmap": "super_pets_ai.refmap.json",
+  "mixins": [
+    "AnvilMenuMixin"
+  ],
+  "client": [],
+  "injectors": {
+    "defaultRequire": 1
+  },
+  "minVersion": "0.8.4"
+}
