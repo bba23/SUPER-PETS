@@ -35,6 +35,8 @@ sourceSets {
     }
 }
 
+loom.mixin.add(sourceSets.aiAddon, "super_pets_ai.refmap.json")
+
 tasks.named('compileAiAddonJava') {
     dependsOn tasks.named('classes')
 }
