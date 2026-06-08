@@ -1,12 +1,16 @@
 package net.mcreator.superpets.friendship;
 
 import net.fabricmc.fabric.api.entity.event.v1.ServerPlayerEvents;
+import net.fabricmc.fabric.api.entity.event.v1.ServerLivingEntityEvents;
 import net.fabricmc.fabric.api.event.lifecycle.v1.ServerTickEvents;
 import net.fabricmc.fabric.api.event.player.UseEntityCallback;
+import net.fabricmc.fabric.api.event.player.UseItemCallback;
 import net.fabricmc.fabric.api.networking.v1.PayloadTypeRegistry;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 
 import net.minecraft.network.chat.Component;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -53,13 +57,33 @@ public final class FriendshipRelicsEvents {
 			player.startRiding(entity, true, true);
 			return InteractionResult.SUCCESS;
 		});
+		UseItemCallback.EVENT.register((player, level, hand) -> {
+			if (!player.isShiftKeyDown() || !player.getItemInHand(hand).isEmpty())
+				return InteractionResult.PASS;
+			if (level.isClientSide())
+				return InteractionResult.SUCCESS;
+			if (!FriendshipRelicsData.hasEquippedNecklace(player))
+				return InteractionResult.PASS;
+			FriendshipRelicsData.unequipNecklace(player, true);
+			player.sendSystemMessage(Component.literal("Unequipped the Friendship Necklace."));
+			return InteractionResult.SUCCESS;
+		});
+		ServerLivingEntityEvents.AFTER_DEATH.register(FriendshipRelicsEvents::afterPetDeath);
 		ServerTickEvents.END_SERVER_TICK.register(server -> server.getPlayerList().getPlayers().forEach(FriendshipRelicsEvents::tickPlayer));
 		ServerPlayerEvents.COPY_FROM.register((oldPlayer, newPlayer, alive) -> {
+			ItemStack oldNecklace = FriendshipRelicsData.necklaceItem(oldPlayer);
 			ItemStack oldStone = FriendshipRelicsData.necklaceStone(oldPlayer);
 			if (alive || FriendshipRelicsData.isMasterStone(oldStone)) {
+				FriendshipRelicsData.setNecklaceItem(newPlayer, oldNecklace.copy());
 				FriendshipRelicsData.setNecklaceStone(newPlayer, oldStone.copy());
-			} else if (!oldStone.isEmpty()) {
-				oldPlayer.drop(oldStone.copy(), false, true);
+			} else {
+				if (!oldNecklace.isEmpty()) {
+					oldPlayer.drop(oldNecklace.copy(), false, true);
+				}
+				if (!oldStone.isEmpty()) {
+					oldPlayer.drop(oldStone.copy(), false, true);
+				}
+				FriendshipRelicsData.setNecklaceItem(newPlayer, ItemStack.EMPTY);
 				FriendshipRelicsData.setNecklaceStone(newPlayer, ItemStack.EMPTY);
 			}
 		});
@@ -107,6 +131,28 @@ public final class FriendshipRelicsEvents {
 		handStone.shrink(1);
 		player.sendSystemMessage(Component.literal(giant ? "A legendary friendship bond was created." : "A friendship bond was created."));
 		return InteractionResult.SUCCESS;
+	}
+
+	private static void afterPetDeath(LivingEntity entity, net.minecraft.world.damagesource.DamageSource source) {
+		if (!(entity.level() instanceof ServerLevel serverLevel) || !FriendshipRelicsData.isBondedPet(entity))
+			return;
+		String bondId = FriendshipRelicsData.getEntityBondId(entity).orElse("");
+		if (bondId.isBlank())
+			return;
+		for (ServerPlayer player : serverLevel.getServer().getPlayerList().getPlayers()) {
+			if (!FriendshipRelicsData.playerOwnsBond(player, bondId))
+				continue;
+			boolean necklaceHeldDeadPet = FriendshipRelicsData.isMasterStoneForBond(FriendshipRelicsData.necklaceStone(player), bondId);
+			if (necklaceHeldDeadPet) {
+				FriendshipRelicsData.unequipNecklace(player, false);
+			}
+			player.sendSystemMessage(Component.literal(petDeathMessage(entity, necklaceHeldDeadPet)));
+		}
+	}
+
+	private static String petDeathMessage(LivingEntity entity, boolean necklaceUnequipped) {
+		String petName = entity.getCustomName() == null ? "friendship pet" : "pet " + entity.getCustomName().getString();
+		return "Your " + petName + " died." + (necklaceUnequipped ? " Your Friendship Necklace was unequipped." : "");
 	}
 
 	private static void tickPlayer(Player player) {

@@ -150,9 +150,40 @@ public final class FriendshipRelicsData {
 		return Optional.empty();
 	}
 
+	public static boolean playerOwnsBond(Player player, String bondId) {
+		if (bondId == null || bondId.isBlank())
+			return false;
+		ItemStack necklaceStone = necklaceStone(player);
+		if (isMasterStoneForBond(necklaceStone, bondId))
+			return true;
+		Inventory inventory = player.getInventory();
+		for (int i = 0; i < inventory.getContainerSize(); i++) {
+			if (isMasterStoneForBond(inventory.getItem(i), bondId))
+				return true;
+		}
+		return false;
+	}
+
+	public static boolean isMasterStoneForBond(ItemStack stack, String bondId) {
+		return isMasterStone(stack) && getBondId(stack).filter(bondId::equals).isPresent();
+	}
+
 	public static boolean playerOwnsPet(Player player, Entity pet) {
 		Optional<String> petBond = getEntityBondId(pet);
 		return petBond.isPresent() && findOwnedMasterBond(player).filter(petBond.get()::equals).isPresent();
+	}
+
+	public static ItemStack necklaceItem(Player player) {
+		if (player instanceof FriendshipNecklaceHolder holder) {
+			return holder.superPets$getNecklaceItem();
+		}
+		return ItemStack.EMPTY;
+	}
+
+	public static void setNecklaceItem(Player player, ItemStack stack) {
+		if (player instanceof FriendshipNecklaceHolder holder) {
+			holder.superPets$setNecklaceItem(stack);
+		}
 	}
 
 	public static ItemStack necklaceStone(Player player) {
@@ -168,7 +199,22 @@ public final class FriendshipRelicsData {
 		}
 	}
 
+	public static boolean hasEquippedNecklace(Player player) {
+		return !necklaceItem(player).isEmpty() || !necklaceStone(player).isEmpty();
+	}
+
+	public static void unequipNecklace(Player player, boolean restoreStone) {
+		ItemStack necklace = necklaceItem(player).copy();
+		ItemStack stone = restoreStone ? necklaceStone(player).copy() : ItemStack.EMPTY;
+		setNecklaceItem(player, ItemStack.EMPTY);
+		setNecklaceStone(player, ItemStack.EMPTY);
+		giveOrDrop(player, necklace);
+		giveOrDrop(player, stone);
+	}
+
 	public static boolean hasFriendshipNecklace(Player player) {
+		if (!necklaceItem(player).isEmpty())
+			return true;
 		Inventory inventory = player.getInventory();
 		for (int i = 0; i < inventory.getContainerSize(); i++) {
 			if (inventory.getItem(i).getItem() == FriendshipRelicsRegistry.FRIENDSHIP_NECKLACE)
@@ -179,6 +225,14 @@ public final class FriendshipRelicsData {
 
 	public static boolean isStoneOfFriendship(ItemStack stack) {
 		return stack.getItem() == SuperPetsModItems.STONEBUTWIRD;
+	}
+
+	private static void giveOrDrop(Player player, ItemStack stack) {
+		if (stack.isEmpty())
+			return;
+		if (!player.getInventory().add(stack)) {
+			player.drop(stack, false);
+		}
 	}
 
 	private static void setBase(LivingEntity entity, net.minecraft.core.Holder<net.minecraft.world.entity.ai.attributes.Attribute> attribute, double value) {

@@ -45,10 +45,10 @@ These match the existing Gradle/MCreator project and current compatible Fabric s
 
 The necklace slot is implemented as a persistent player-data slot, not a full custom GUI.
 
-- Keep a Friendship Necklace in inventory.
 - Hold a Linked Friendship Stone or Master Stone in one hand.
-- Right-click with the Friendship Necklace in the other hand to equip that stone into the necklace slot.
-- Right-click the Friendship Necklace again with a filled slot to remove the stored stone back to inventory.
+- Right-click with the Friendship Necklace in the other hand to equip the necklace and stone. The necklace item leaves your inventory while equipped.
+- Sneak-right-click with an empty hand to unequip the necklace and return the stored items to inventory.
+- If the bonded pet dies while its Master Stone is equipped, the owner is notified and the Friendship Necklace is automatically unequipped.
 
 This keeps the feature stable in singleplayer and LAN while avoiding a fragile custom MCreator inventory screen.
 
@@ -58,7 +58,7 @@ The slab is implemented as a 2x2 half-height multiblock. Each quarter uses a dif
 
 ## Creator's Stone AI Extension
 
-Creator's Stone is registered by the optional add-on as `super_pets_ai:creator_stone`. Install `modid-1.0.12.jar` for the normal mod, then add `super-pets-ai-1.0.12.jar` only when you want the AI extension. The add-on depends on `super_pets` and adds its item, loot injection, creative-tab entry, and anvil mixin from its own jar.
+Creator's Stone is registered by the optional add-on as `super_pets_ai:creator_stone`. Install `modid-1.0.13.jar` for the normal mod, then add `super-pets-ai-1.0.13.jar` only when you want the AI extension. The add-on depends on `super_pets` and adds its item, loot injection, creative-tab entry, and anvil mixin from its own jar.
 
 A shrine chest can rarely contain Creator's Stone when the add-on is installed. Use it on a bonded large Parrot or Axolotl, including Legendary Giant pets, while carrying the matching Master Stone. Unbonded pets, unsupported entities, normal unrelated mobs, players, and hostile mobs are rejected.
 
@@ -107,4 +107,4 @@ If any helper step fails or the helper command is blank, the mod keeps working w
 ```
 
 The built jar is written to `build/libs/`.
-The normal mod jar is `modid-1.0.12.jar`; the optional AI add-on jar is `super-pets-ai-1.0.12.jar`.
+The normal mod jar is `modid-1.0.13.jar`; the optional AI add-on jar is `super-pets-ai-1.0.13.jar`.
