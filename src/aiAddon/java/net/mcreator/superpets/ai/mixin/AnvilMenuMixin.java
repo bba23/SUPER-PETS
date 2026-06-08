@@ -8,6 +8,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import net.minecraft.world.Container;
+import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.AnvilMenu;
 import net.minecraft.world.inventory.DataSlot;
 import net.minecraft.world.inventory.ResultContainer;
@@ -30,9 +31,6 @@ public abstract class AnvilMenuMixin {
 	@Final
 	private DataSlot cost;
 
-	@Shadow
-	public abstract void broadcastChanges();
-
 	@Inject(method = "createResult()V", at = @At("HEAD"), cancellable = true)
 	private void superPets$createCreatorStoneToolResult(CallbackInfo ci) {
 		ItemStack result = CreatorStoneData.applyToTool(this.inputSlots.getItem(0), this.inputSlots.getItem(1));
@@ -40,7 +38,7 @@ public abstract class AnvilMenuMixin {
 			return;
 		this.cost.set(Math.max(1, CreatorStoneAiConfig.anvilCost));
 		this.resultSlots.setItem(0, result);
-		this.broadcastChanges();
+		((AbstractContainerMenu) (Object) this).broadcastChanges();
 		ci.cancel();
 	}
 }

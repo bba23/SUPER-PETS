@@ -43,7 +43,7 @@ These match the existing Gradle/MCreator project and current compatible Fabric s
 
 ## Optional AI Add-On
 
-Creator's Stone is registered by the optional add-on as `super_pets_ai:creator_stone`. Install `modid-1.0.12.jar` for the base mod only, add `super-pets-ai-1.0.12.jar` when you want the AI extension, or use `super-pets-full-1.0.12.jar` when you want one jar that bundles both.
+Creator's Stone is registered by the optional add-on as `super_pets_ai:creator_stone`. Install `modid-1.0.13.jar` for the base mod only, add `super-pets-ai-1.0.13.jar` when you want the AI extension, or use `super-pets-full-1.0.13.jar` when you want one jar that bundles both.
 
 ## Necklace Slot Controls
 
@@ -77,6 +77,6 @@ The slab is implemented as a 2x2 half-height multiblock. Each quarter uses a dif
 
 The release jars are written to `build/libs/`:
 
-- `modid-1.0.12.jar`
-- `super-pets-ai-1.0.12.jar`
-- `super-pets-full-1.0.12.jar`
+- `modid-1.0.13.jar`
+- `super-pets-ai-1.0.13.jar`
+- `super-pets-full-1.0.13.jar`

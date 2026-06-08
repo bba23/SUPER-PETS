@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "super_pets_ai",
-  "version": "1.0.12",
+  "version": "1.0.13",
   "name": "SUPER PETS AI Extension",
   "description": "Optional Creator's Stone AI add-on for SUPER PETS.",
   "authors": [
@@ -23,6 +23,6 @@
     "minecraft": "~26.1.2",
     "java": ">=25",
     "fabric-api": "*",
-    "super_pets": ">=1.0.12"
+    "super_pets": ">=1.0.13"
   }
 }

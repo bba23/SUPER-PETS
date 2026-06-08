@@ -1,0 +1,58 @@
+{\rtf1\ansi\deff0
+{\fonttbl{\f0 Arial;}}
+\fs28\b SUPER PETS - How It Works\b0\par
+\fs22\par
+\b What SUPER PETS is\b0\par
+SUPER PETS is a Fabric Minecraft mod that lets you create special friendship bonds with parrots and axolotls. The base mod works on its own. The optional AI extension adds Creator's Stone features and fallback generated-style item visuals.\par
+\par
+\b Release jars\b0\par
+- modid-1.0.13.jar: base mod only. Use this if you only want the normal SUPER PETS gameplay.\par
+- super-pets-ai-1.0.13.jar: AI extension only. Install this beside the base jar if you want Creator's Stone features.\par
+- super-pets-full-1.0.13.jar: base mod plus AI extension bundled together in one jar.\par
+\par
+\b Installing\b0\par
+Put the jar or jars you want into your Fabric mods folder. For your Lunar Client profile, that folder is:\par
+C:\\Users\\Itay\\.lunarclient\\profiles\\user-modpack\\banan-test\\mods\\fabric-26.1.2\par
+\par
+Use either the base jar plus AI extension jar, or the full bundled jar. Do not install both the full jar and the separate base/AI jars at the same time, because that can duplicate the same mod content.\par
+\par
+\b Main items\b0\par
+- Stone of Friendship: shrine item used in friendship crafting.\par
+- Linked Friendship Stone: one of the stones used to create a pet bond.\par
+- Friendship Necklace: stores a linked or master stone in a hidden player slot.\par
+- Master Stone: created when a pet bond succeeds. It proves ownership of that bonded pet.\par
+- Giant Soul Stone and Giant Linked Friendship Stone: used for legendary giant bonds.\par
+- Creator's Stone: optional AI extension item for bonded large pets and Legendary Giant pets.\par
+\par
+\b Necklace controls\b0\par
+Hold a Linked Friendship Stone or Master Stone in one hand, then right-click with the Friendship Necklace in the other hand. The necklace and stone leave your inventory while equipped and are stored safely on your player data.\par
+\par
+To unequip, sneak-right-click with an empty hand. The necklace and stored stone return to your inventory. If your inventory is full, they drop near you.\par
+\par
+If the bonded pet dies while its Master Stone is equipped in the necklace, SUPER PETS sends you a message and automatically unequips the necklace. The necklace comes back, but the dead pet's equipped Master Stone is removed because that pet is gone.\par
+\par
+\b Creating a bond\b0\par
+1. Get or craft a Friendship Necklace.\par
+2. Equip a matching Linked Friendship Stone into the necklace.\par
+3. Use the matching stone on a parrot or axolotl.\par
+4. If the stones share the same Bond ID, the pet becomes bonded and the necklace stone becomes a Master Stone.\par
+\par
+\b Bonded pets\b0\par
+Bonded parrots and axolotls become larger, persistent, and rideable by the owner. Parrots can be flown, and axolotls can be ridden through water. Axolotl riders receive Water Breathing while mounted.\par
+\par
+\b Optional AI extension\b0\par
+The AI extension adds Creator's Stone. It is optional and does not require Python, Hugging Face, CUDA, downloaded models, or cloud APIs to launch Minecraft. By default it uses bundled fallback visuals and stores deterministic generated-style data.\par
+\par
+The AI extension config file is:\par
+config\\super_pets_ai.properties\par
+\par
+The default setting creator_stone_ai_enabled=false means no helper program is used.\par
+\par
+\b Good install choices\b0\par
+- Simple setup: install modid-1.0.13.jar only.\par
+- Base plus extension setup: install modid-1.0.13.jar and super-pets-ai-1.0.13.jar.\par
+- One-file setup: install super-pets-full-1.0.13.jar only.\par
+\par
+\b Notes\b0\par
+The internal mod ID is still super_pets. That is intentional so existing saves, recipes, assets, and registry IDs keep working.\par
+}
