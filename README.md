@@ -1,6 +1,6 @@
-# Friendship Relics
+# SUPER PETS
 
-Friendship Relics is a Fabric Minecraft Java Edition base mod built from the existing MCreator workspace in this folder. The current phase intentionally excludes all AI generation, Hugging Face helpers, generated textures, model downloads, and Python AI tooling.
+SUPER PETS is a Fabric Minecraft Java Edition base mod built from the existing MCreator workspace in this folder. The current phase intentionally excludes all AI generation, Hugging Face helpers, generated textures, model downloads, and Python AI tooling.
 
 ## Chosen Versions
 
@@ -71,4 +71,4 @@ The slab is implemented as a 2x2 half-height multiblock. Each quarter uses a dif
 .\gradlew.bat build
 ```
 
-The built jar is written to `build/libs/modid-1.0.10.jar`.
+The built jar is written to `build/libs/modid-1.0.11.jar`.

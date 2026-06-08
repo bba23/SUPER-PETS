@@ -38,7 +38,7 @@ public final class FriendshipRelicsConfig {
 			try {
 				Files.createDirectories(path.getParent());
 				try (Writer writer = Files.newBufferedWriter(path)) {
-					properties.store(writer, "Friendship Relics base config");
+					properties.store(writer, "SUPER PETS base config");
 				}
 			} catch (IOException ignored) {
 			}
