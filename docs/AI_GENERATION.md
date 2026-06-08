@@ -1,6 +1,6 @@
 # Creator's Stone Local AI Notes
 
-This branch keeps AI optional as a separate add-on jar. The normal `super_pets` mod runs without the add-on, Python, CUDA, Hugging Face, NVIDIA packages, model downloads, or cloud APIs. When `super-pets-ai-1.0.11.jar` is installed beside `modid-1.0.11.jar`, the add-on uses deterministic fallback visuals plus generated item data by default.
+This branch keeps AI optional as a separate add-on jar. The normal `super_pets` mod runs without the add-on, Python, CUDA, Hugging Face, NVIDIA packages, model downloads, or cloud APIs. When `super-pets-ai-1.0.12.jar` is installed beside `modid-1.0.12.jar`, the add-on uses deterministic fallback visuals plus generated item data by default.
 
 ## Runtime Config
 
