@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/handheld",
+  "textures": {
+    "layer0": "super_pets_ai:item/generated_tool_shovel_parrot"
+  }
+}

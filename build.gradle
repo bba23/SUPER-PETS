@@ -2,7 +2,7 @@ plugins {
     id 'net.fabricmc.fabric-loom' version '1.16-SNAPSHOT'
 }
 
-version = '1.0.11'
+version = '1.0.12'
 base.archivesName = "modid"
 
 def lunarModsDir = file('C:/Users/Itay/.lunarclient/profiles/user-modpack/banan-test/mods/fabric-26.1.2')
@@ -26,8 +26,61 @@ dependencies {
     implementation "net.fabricmc.fabric-api:fabric-api:0.150.0+26.1.2"
 }
 
+sourceSets {
+    aiAddon {
+        java.setSrcDirs(['src/aiAddon/java'])
+        resources.setSrcDirs(['src/aiAddon/resources'])
+        compileClasspath += sourceSets.main.output + configurations.compileClasspath
+        runtimeClasspath += output + compileClasspath
+    }
+}
+
+tasks.named('compileAiAddonJava') {
+    dependsOn tasks.named('classes')
+}
+
+tasks.register('aiAddonJar', Jar) {
+    archiveBaseName.set('super-pets-ai')
+    archiveVersion.set(project.version.toString())
+    from sourceSets.aiAddon.output
+    dependsOn tasks.named('aiAddonClasses')
+}
+
+tasks.register('combinedModJar') {
+    dependsOn tasks.named('jar'), tasks.named('aiAddonJar')
+    def outputJar = layout.buildDirectory.file("libs/super-pets-full-${project.version}.jar")
+    outputs.file(outputJar)
+
+    doLast {
+        def baseJarFile = tasks.named('jar').get().archiveFile.get().asFile
+        def aiJarFile = tasks.named('aiAddonJar').get().archiveFile.get().asFile
+        def outputFile = outputJar.get().asFile
+        def tempDir = layout.buildDirectory.dir('tmp/combinedModJar').get().asFile
+        delete tempDir
+        tempDir.mkdirs()
+
+        def fabricData = new groovy.json.JsonSlurper().parse(file('src/main/resources/fabric.mod.json'))
+        fabricData.jars = [[file: "META-INF/jars/${aiJarFile.name}"]]
+        file("${tempDir}/fabric.mod.json").text = groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(fabricData)) + System.lineSeparator()
+
+        if (outputFile.exists()) {
+            outputFile.delete()
+        }
+        ant.zip(destfile: outputFile) {
+            zipfileset(src: baseJarFile) {
+                exclude(name: 'fabric.mod.json')
+            }
+            zipfileset(file: aiJarFile, fullpath: "META-INF/jars/${aiJarFile.name}")
+            fileset(dir: tempDir) {
+                include(name: 'fabric.mod.json')
+            }
+        }
+    }
+}
+
 // We need to do this because MCreator doesn't allow to split armor textures in multiple folders
 build {
+    dependsOn tasks.named('combinedModJar')
     doLast {
         copy {
             from 'src/main/resources/assets/dev_fabric_2612/textures/entity/equipment/humanoid/'
@@ -35,9 +88,19 @@ build {
         }
         delete fileTree(lunarModsDir) {
             include "${base.archivesName.get()}-*.jar"
+            include "super-pets-ai-*.jar"
+            include "super-pets-full-*.jar"
         }
         copy {
             from "build/libs/${base.archivesName.get()}-${project.version}.jar"
+            into lunarModsDir
+        }
+        copy {
+            from tasks.named('aiAddonJar').get().archiveFile
+            into lunarModsDir
+        }
+        copy {
+            from tasks.named('combinedModJar').get().outputs.files
             into lunarModsDir
         }
     }

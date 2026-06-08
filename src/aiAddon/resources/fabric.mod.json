@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "super_pets_ai",
+  "version": "1.0.12",
+  "name": "SUPER PETS AI Extension",
+  "description": "Optional Creator's Stone AI add-on for SUPER PETS.",
+  "authors": [
+    "MCreator",
+    "Codex"
+  ],
+  "license": "Not specified",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.mcreator.superpets.ai.SuperPetsAiMod"
+    ]
+  },
+  "mixins": [
+    "super_pets_ai.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.2",
+    "minecraft": "~26.1.2",
+    "java": ">=25",
+    "fabric-api": "*",
+    "super_pets": ">=1.0.12"
+  }
+}

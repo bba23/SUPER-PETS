@@ -1,6 +1,6 @@
 # SUPER PETS
 
-SUPER PETS is a Fabric Minecraft Java Edition base mod built from the existing MCreator workspace in this folder. The current phase intentionally excludes all AI generation, Hugging Face helpers, generated textures, model downloads, and Python AI tooling.
+SUPER PETS is a Fabric Minecraft Java Edition mod built from the existing MCreator workspace in this folder. The base jar runs without AI tooling, and an optional AI add-on jar adds Creator's Stone features without making Python, Hugging Face, model downloads, or cloud APIs required for normal play.
 
 ## Chosen Versions
 
@@ -41,6 +41,10 @@ These match the existing Gradle/MCreator project and current compatible Fabric s
 - Existing shrine variants were moved to underground Overworld worldgen with Y -50 to -10 targeting and more survival-oriented spacing.
 - Added a Friendship Shrine chest loot table for Stone of Friendship, Bonding Soul, and Ancient Resin rewards.
 
+## Optional AI Add-On
+
+Creator's Stone is registered by the optional add-on as `super_pets_ai:creator_stone`. Install `modid-1.0.12.jar` for the base mod only, add `super-pets-ai-1.0.12.jar` when you want the AI extension, or use `super-pets-full-1.0.12.jar` when you want one jar that bundles both.
+
 ## Necklace Slot Controls
 
 The necklace slot is implemented as a persistent player-data slot, not a full custom GUI.
@@ -62,7 +66,7 @@ The slab is implemented as a 2x2 half-height multiblock. Each quarter uses a dif
 - The shrine loot table is provided as a data hook, but existing `.nbt` shrine structures were preserved and not rewritten. Existing chests must reference `super_pets:chests/friendship_shrine` inside the structure for in-structure loot to appear.
 - Pet mounting uses stable server tick movement based on rider input and look direction. It is a base implementation, not a custom animated mount renderer.
 - Multi-passenger giant pets attempt to allow more riders through forced mounting, but vanilla passenger constraints may still limit behavior depending on entity internals.
-- No AI visuals or generated item/weapon textures are included in this phase.
+- AI visuals and generated item/tool texture hooks are isolated in the optional add-on jar.
 - The Stone of Friendship item model is a vanilla-compatible adaptation of the supplied `IDEL_E` Blockbench Java model. The Friendship Necklace item model uses a vanilla-compatible gold chain shape plus the supplied glTF gold texture; the original glTF source is preserved under `assets/super_pets/source_models/necklace/` for later replacement with a final necklace model.
 
 ## Build
@@ -71,4 +75,8 @@ The slab is implemented as a 2x2 half-height multiblock. Each quarter uses a dif
 .\gradlew.bat build
 ```
 
-The built jar is written to `build/libs/modid-1.0.11.jar`.
+The release jars are written to `build/libs/`:
+
+- `modid-1.0.12.jar`
+- `super-pets-ai-1.0.12.jar`
+- `super-pets-full-1.0.12.jar`
