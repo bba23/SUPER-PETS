@@ -28,6 +28,7 @@ These match the existing Gradle/MCreator project and current compatible Fabric s
 - Added Stone of Friendship naming on the existing `stonebutwird` item to avoid duplicating the existing MCreator item.
 - Added Bonding Soul, Linked Friendship Stone, Giant Soul Stone, Giant Linked Friendship Stone, Master Stone, and Friendship Necklace.
 - Added persistent player necklace-slot storage through custom player save data.
+- Friendship Necklace leaves inventory while equipped, can be unequipped with an empty-hand sneak-right-click, and auto-unequips when the bonded pet dies.
 - Added bonding for parrots and axolotls using matching linked stone Bond IDs.
 - Bonded pets store Bond ID/status in persistent entity tags and receive permanent scale/attribute updates.
 - Master Stones store Bond ID, pet type, variant, pet name, world seed, and Legendary Giant status as item custom data.
@@ -44,10 +45,10 @@ These match the existing Gradle/MCreator project and current compatible Fabric s
 
 The necklace slot is implemented as a persistent player-data slot, not a full custom GUI.
 
-- Keep a Friendship Necklace in inventory.
 - Hold a Linked Friendship Stone or Master Stone in one hand.
-- Right-click with the Friendship Necklace in the other hand to equip that stone into the necklace slot.
-- Right-click the Friendship Necklace again with a filled slot to remove the stored stone back to inventory.
+- Right-click with the Friendship Necklace in the other hand to equip the necklace and stone. The necklace item leaves your inventory while equipped.
+- Sneak-right-click with an empty hand to unequip the necklace and return the stored items to inventory.
+- If the bonded pet dies while its Master Stone is equipped, the owner is notified and the Friendship Necklace is automatically unequipped.
 
 This keeps the feature stable in singleplayer and LAN while avoiding a fragile custom MCreator inventory screen.
 
@@ -70,4 +71,4 @@ The slab is implemented as a 2x2 half-height multiblock. Each quarter uses a dif
 .\gradlew.bat build
 ```
 
-The built jar is written to `build/libs/`.
+The built jar is written to `build/libs/modid-1.0.10.jar`.

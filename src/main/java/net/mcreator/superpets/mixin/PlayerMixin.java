@@ -17,6 +17,8 @@ import net.mcreator.superpets.friendship.FriendshipNecklaceHolder;
 @Mixin(Player.class)
 public abstract class PlayerMixin implements FriendshipNecklaceHolder {
 	@Unique
+	private ItemStack superPets$necklaceItem = ItemStack.EMPTY;
+	@Unique
 	private ItemStack superPets$necklaceStone = ItemStack.EMPTY;
 
 	@Inject(method = "tick()V", at = @At("TAIL"))
@@ -36,14 +38,28 @@ public abstract class PlayerMixin implements FriendshipNecklaceHolder {
 
 	@Inject(method = "readAdditionalSaveData(Lnet/minecraft/world/level/storage/ValueInput;)V", at = @At("TAIL"))
 	public void superPets$readNecklace(ValueInput input, CallbackInfo ci) {
+		this.superPets$necklaceItem = input.read("SuperPetsNecklaceItem", ItemStack.OPTIONAL_CODEC).orElse(ItemStack.EMPTY);
 		this.superPets$necklaceStone = input.read("SuperPetsNecklaceStone", ItemStack.OPTIONAL_CODEC).orElse(ItemStack.EMPTY);
 	}
 
 	@Inject(method = "addAdditionalSaveData(Lnet/minecraft/world/level/storage/ValueOutput;)V", at = @At("TAIL"))
 	public void superPets$writeNecklace(ValueOutput output, CallbackInfo ci) {
+		if (!this.superPets$necklaceItem.isEmpty()) {
+			output.store("SuperPetsNecklaceItem", ItemStack.OPTIONAL_CODEC, this.superPets$necklaceItem);
+		}
 		if (!this.superPets$necklaceStone.isEmpty()) {
 			output.store("SuperPetsNecklaceStone", ItemStack.OPTIONAL_CODEC, this.superPets$necklaceStone);
 		}
+	}
+
+	@Override
+	public ItemStack superPets$getNecklaceItem() {
+		return this.superPets$necklaceItem;
+	}
+
+	@Override
+	public void superPets$setNecklaceItem(ItemStack stack) {
+		this.superPets$necklaceItem = stack == null ? ItemStack.EMPTY : stack.copy();
 	}
 
 	@Override

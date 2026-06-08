@@ -23,11 +23,8 @@ public class FriendshipNecklaceItem extends Item {
 			return InteractionResult.SUCCESS;
 		ItemStack stored = FriendshipRelicsData.necklaceStone(player);
 		if (!stored.isEmpty()) {
-			FriendshipRelicsData.setNecklaceStone(player, ItemStack.EMPTY);
-			if (!player.getInventory().add(stored)) {
-				player.drop(stored, false);
-			}
-			player.sendSystemMessage(Component.literal("Removed the necklace stone."));
+			FriendshipRelicsData.unequipNecklace(player, true);
+			player.sendSystemMessage(Component.literal("Unequipped the Friendship Necklace."));
 			return InteractionResult.SUCCESS;
 		}
 		InteractionHand sourceHand = hand == InteractionHand.MAIN_HAND ? InteractionHand.OFF_HAND : InteractionHand.MAIN_HAND;
@@ -36,15 +33,19 @@ public class FriendshipNecklaceItem extends Item {
 			player.sendSystemMessage(Component.literal("Hold a Linked Friendship Stone or Master Stone in the other hand."));
 			return InteractionResult.SUCCESS;
 		}
+		ItemStack necklace = player.getItemInHand(hand).copyWithCount(1);
 		ItemStack inserted = source.copyWithCount(1);
+		FriendshipRelicsData.setNecklaceItem(player, necklace);
 		FriendshipRelicsData.setNecklaceStone(player, inserted);
+		player.getItemInHand(hand).shrink(1);
 		source.shrink(1);
-		player.sendSystemMessage(Component.literal("Equipped a stone in the necklace slot."));
+		player.sendSystemMessage(Component.literal("Equipped the Friendship Necklace."));
 		return InteractionResult.SUCCESS;
 	}
 
 	@Override
 	public void appendHoverText(ItemStack stack, TooltipContext context, TooltipDisplay tooltipDisplay, Consumer<Component> consumer, TooltipFlag flag) {
 		consumer.accept(Component.literal("Right-click with a stone in the other hand to use the necklace slot."));
+		consumer.accept(Component.literal("Sneak-right-click with an empty hand to unequip."));
 	}
 }
